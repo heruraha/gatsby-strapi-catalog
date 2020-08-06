@@ -1,0 +1,38 @@
+@import "src/assets/styles/variables.scss";
+
+#navbar-header {
+  .btn {
+    &:focus {
+      @extend .focus-light;
+    }
+  }
+
+  .btn-cart {
+    position: relative;
+    .count {
+      width: 20px;
+      height: 20px;
+      display: block;
+      position: absolute;
+      border-radius: 20px;
+      top: -5px;
+      right: 0;
+      font-size: 0.8rem;
+    }
+  }
+
+  .navbar-collapse {
+    @extend .transition-default;
+    &.show {
+      position: absolute;
+      top: 57px;
+      left: 0;
+      background: darken($secondary, 10%);
+      .navbar-nav {
+        padding: 1rem;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+    }
+  }
+}

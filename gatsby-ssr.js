@@ -1,0 +1,1 @@
+export { wrapRootElement } from './src/hooks/use-global-state'

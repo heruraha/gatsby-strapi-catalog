@@ -1,0 +1,40 @@
+@import "src/assets/styles/variables.scss";
+
+.carousel-component {
+  &.carousel {
+    border-radius: 4px;
+    overflow: hidden;
+    @include sm {
+      overflow: visible;
+      .carousel-indicators {
+        bottom: -50px;
+        li {
+          border-color: white;
+          border-radius: 100px;
+          background-color: white !important;
+        }
+      }
+    }
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    opacity: 0.31 !important;
+    cursor: pointer !important;
+    z-index: 3;
+    &:hover {
+      opacity: 1 !important;
+    }
+
+    & .prev-icon,
+    & .next-icon {
+      background-color: $secondary !important;
+      display: inline-block;
+      background: no-repeat 50% / 100% 100%;
+      padding: 0.65rem;
+      svg {
+        width: 65%;
+        height: 65%;
+      }
+    }
+  }
+}

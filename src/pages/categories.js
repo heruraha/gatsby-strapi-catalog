@@ -4,35 +4,19 @@ import useGlobalState from "src/hooks/use-global-state"
 import Layout from "src/components/layout"
 import Head from "src/components/head"
 
-const IndexPage = () => {
+const CategoriesPage = () => {
   const { appState, dispatch } = useGlobalState()
   const [state, setState] = useState(null)
   const data = useStaticQuery(graphql`
     query {
-      allStrapiProducts {
+      allStrapiCategories {
         edges {
           node {
             id
             title
-            description
-            price_nickel
-            price_brass
-            fields {
-              slug
-              strapiId
-            }
-            categories {
+            products {
               id
               title
-            }
-            images {
-              formats {
-                medium {
-                  url
-                  width
-                  height
-                }
-              }
             }
           }
         }
@@ -40,20 +24,19 @@ const IndexPage = () => {
     }
   `)
 
-  console.log(data.allStrapiProducts.edges)
+  console.log(data.allStrapiCategories.edges)
 
   return (
     <Layout>
       <Head title="Home" />
-      <h3>All Products</h3>
+      <h3>Category</h3>
       <div className="row mt-5">
         {data &&
-          data.allStrapiProducts.edges.map(e => (
+          data.allStrapiCategories.edges.map(e => (
             <div key={e.id} className="col-md-4">
               <h4>{e.node.title}</h4>
-              <p>{e.node.description}</p>
               <Link
-                to={`/product/${e.node.fields.strapiId}/${e.node.fields.slug}`}
+                to={`/category/${e.node.id}/${e.node.title}`}
                 className="btn btn-outline-primary">
                 View
               </Link>
@@ -64,4 +47,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default CategoriesPage

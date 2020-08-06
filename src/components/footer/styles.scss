@@ -1,0 +1,9 @@
+@import "src/assets/styles/variables.scss";
+
+#footer-wrap {
+  .social-links {
+    a {
+      @extend .focus-light;
+    }
+  }
+}
